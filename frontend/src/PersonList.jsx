@@ -13,7 +13,7 @@ const PersonList = ({persons, onDelete}) => {
         <>
             {persons.map(person =>
                 <div key={person.id}>
-                    <PersonDetails name={person.name} number={person.number}/>
+                    <PersonDetails name={person.name} number={person.phoneNumber}/>
                     <button onClick={() => onDelete(person.id)}>delete</button>
                 </div>
                 

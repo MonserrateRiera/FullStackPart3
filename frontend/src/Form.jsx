@@ -13,7 +13,7 @@ const Form = ({onChange, onSubmit}) =>{
     }
     const handleSubmit = (event) =>{
         event.preventDefault();
-        const newPerson = {name: newName, number: newNumber};
+        const newPerson = {name: newName, phoneNumber: newNumber};
         onSubmit(newPerson);
         setNewName('');
     }

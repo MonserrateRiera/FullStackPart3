@@ -1,8 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
 app.use(express.json())
+const Entry = require('./Models/Entry');
 
 morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
@@ -39,11 +41,14 @@ let agenda = [
 
 
 app.get('/', (request, response) => {
-    response.send('<h1>Hello World!</h1>')
+    response.send('<h1>Hello Phonelist!</h1>')
   })
   
   app.get('/api/persons', (request, response) => {
-    response.json(agenda)
+    Entry.find({})
+      .then(result=>{
+        response.json(result);
+      })
   })
   app.get('/info', (request, response) => {
     const date = new Date();
@@ -68,14 +73,14 @@ app.get('/', (request, response) => {
   })
 
   app.post('/api/persons', (request, response) =>{
-    console.log("lo que reb per es request: ", request.body );
-    const {name, number} = request.body;
-    const id = generateId();
+    const {name, phoneNumber} = request.body;
+    //const id = generateId();
     const newEntry = {
       name,
-      number,
-      id
+      phoneNumber,
+      //id
     };
+
     console.log("prova amb vainas de js", newEntry);
     if(isEmpty(request.body.name)&& isEmpty(request.body.number)){
       return response.status(400).json({ error: 'name and phone cant be empty' });
@@ -83,10 +88,15 @@ app.get('/', (request, response) => {
     if(isRepeated(name)){
       return response.status(400).json({ error: 'Name cant be repeatded' });
     }
-    
-      agenda.push(newEntry);
-      response.status(200).json(newEntry);
-      console.log(agenda);
+      const entry = new Entry(newEntry);
+      entry.save()
+        .then(savedEntry => {
+          //console.log(`Added ${name}, number ${phoneNumber} in the ponelist.`);
+          response.json(savedEntry);
+        })
+      //agenda.push(newEntry);
+      //response.status(200).json(newEntry);
+      //console.log(agenda);
   }) 
 
   const generateId = () => {
@@ -108,7 +118,7 @@ app.get('/', (request, response) => {
     return false;
   };
 
-  const PORT = process.env.PORT || 3001
+  const PORT = process.env.PORT
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
   })
