@@ -26,6 +26,9 @@ const App = () => {
       setMessage("user created correctly");
       setClasname('notification');
       setTimeout(() => {setMessage(null)}, 5000)
+      .catch(error=>{
+        console.log(error.data.error);
+      })
     }
     else{
       confirmUpdate(newPerson);
