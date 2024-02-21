@@ -44,7 +44,7 @@ app.get('/', (request, response) => {
   })
 
   app.get('/api/persons/:id',(request, response, next)=>{
-    
+    console.log(request.params.id)
     Entry.findById(request.params.id)
       .then(person=>{
         person ? response.json(person) : response.status(404).end();
@@ -62,6 +62,7 @@ app.get('/', (request, response) => {
   })
 
   app.put('/api/persons/:id', (request, response, next) =>{
+
     const {name, phoneNumber} = request.body;
     const newEntry = {
       name,
@@ -77,11 +78,11 @@ app.get('/', (request, response) => {
 
   app.post('/api/persons', (request, response,next) =>{
     const {name, phoneNumber} = request.body;
-    //const id = generateId();
+   
     const newEntry = {
       name,
       phoneNumber,
-      //id
+      
     };
 
     console.log("prova amb vainas de js", newEntry);
@@ -98,17 +99,9 @@ app.get('/', (request, response) => {
           response.json(savedEntry);
         })
         .catch(error=>next(error))
-      //agenda.push(newEntry);
-      //response.status(200).json(newEntry);
-      //console.log(agenda);
+      
   }) 
 
-  const generateId = () => {
-    const min = agenda.length;
-    const max = 1000;
-    return Math.floor(Math.random() * (max-min)+min);
-  }
-  
   const isEmpty = (parameter) =>{
     if(!parameter || parameter.trim() === ''){
       return true;
