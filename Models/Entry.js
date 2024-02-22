@@ -14,7 +14,16 @@ const entrySchema = new mongoose.Schema({
       minLength: 3,
       required: true
     },
-    phoneNumber: String,
+    phoneNumber: {
+      type: String,
+      validate: {
+        validator: function(v) {
+          return /\d{3}-\d{6}/.test(v);
+        },
+        message: props => `${props.value} no es un número de teléfono válido. El formato debe ser 123-456789`
+      },
+      required: true
+    }
 })
 
 //Esborram valors que te a sa bbdd.

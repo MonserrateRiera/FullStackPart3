@@ -40,7 +40,7 @@ app.get('/', (request, response) => {
   })
   app.get('/info', (request, response) => {
     const date = new Date();
-    response.send(`<p>Phonebook has info for ${agenda.length} people.</p> <p>${date}</p>`)
+    response.send(`<p>Phonebook has info for 2 people.</p>`)
   })
 
   app.get('/api/persons/:id',(request, response, next)=>{
@@ -89,9 +89,7 @@ app.get('/', (request, response) => {
     if(isEmpty(request.body.name)&& isEmpty(request.body.number)){
       return response.status(400).json({ error: 'name and phone cant be empty' });
     }
-    if(isRepeated(name)){
-      return response.status(400).json({ error: 'Name cant be repeatded' });
-    }
+   
       const entry = new Entry(newEntry);
       entry.save()
         .then(savedEntry => {
@@ -108,12 +106,7 @@ app.get('/', (request, response) => {
     }
     return false;
   }
-  const isRepeated = (name) => {
-    if(agenda.find(entry => entry.name === name)){
-      return true;
-    }
-    return false;
-  };
+  
 
   app.use(unknownEndpoint);
   app.use(errorHandler);
