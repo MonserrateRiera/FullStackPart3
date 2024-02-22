@@ -27,7 +27,9 @@ const App = () => {
       setClasname('notification');
       setTimeout(() => {setMessage(null)}, 5000)
       .catch(error=>{
-        console.log(error.data.error);
+        setMessage("There's an Error!", error);
+        setClasname('error');
+        setTimeout(() => {setMessage(null)}, 5000)
       })
     }
     else{
@@ -60,8 +62,6 @@ const App = () => {
       setClasname('error');
       setTimeout(() => {setMessage(null)}, 5000)
     })
-    
-    
   }
 
   const filterPersons = () =>{
