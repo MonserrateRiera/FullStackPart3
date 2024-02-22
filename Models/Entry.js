@@ -7,25 +7,25 @@ console.log(url);
 console.log('connecting to', url)
 mongoose.connect(url)
   .then((result) => { console.log('connected to MongoDB') })
-  .catch((error) => { console.log('error connecting to MongoDB:', error.message) }))
+  .catch((error) => { console.log('error connecting to MongoDB:', error.message); });
 
 const entrySchema = new mongoose.Schema({
-    name: {
-      type: String,
-      minLength: 3,
-      required: true
-    },
-    phoneNumber: {
-      type: String,
-      validate: {
-        validator: function(v) {
-          return /\d{3}-\d{6}/.test(v);
-        },
-        message: props => `${props.value} no es un número de teléfono válido. El formato debe ser 123-456789`
+  name: {
+    type: String,
+    minLength: 3,
+    required: true,
+  },
+  phoneNumber: {
+    type: String,
+    validate: {
+      validator: function(v) {
+        return /\d{3}-\d{6}/.test(v);
       },
-      required: true
-    }
-})
+      message: (props) => `${props.value} no es un número de teléfono válido. El formato debe ser 123-456789`,
+    },
+    required: true,
+  },
+});
 
 //Esborram valors que te a sa bbdd.
 entrySchema.set('toJSON', {
