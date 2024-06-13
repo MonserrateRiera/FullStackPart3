@@ -1,5 +1,5 @@
 const entriesRouter = require ('express').Router();
-const Entry = require('../models/Entry');
+const Entry = require('../Models/Entry');
 
 entriesRouter.get('/', (request, response) => {
     Entry.find({})
