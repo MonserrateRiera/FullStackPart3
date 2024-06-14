@@ -1,6 +1,5 @@
 import {useState} from 'react'
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Form, Button, Card, Container } from 'react-bootstrap';
 const MyForm = ({onChange, onSubmit}) =>{
 
     const [ newName, setNewName ] = useState('')
@@ -20,31 +19,35 @@ const MyForm = ({onChange, onSubmit}) =>{
     }
 
     return(
-      
-        <Form onSubmit={handleSubmit}>
-          <h2>Add a new contact</h2>
-          <Form.Group controlId="formName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter name"
-          value={newName}
-          onChange={handleNameChange}
-        />
-      </Form.Group>
-      <Form.Group controlId="formNumber">
-        <Form.Label>Number</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter number"
-          value={newNumber}
-          onChange={handleNumberChange}
-        />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Add
-      </Button>
-      </Form>
+      <Container className="mt-5">
+
+          <Form onSubmit={handleSubmit}>
+            <h2>Add a new contact</h2>
+            <Form.Group controlId="formName">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter name"
+            value={newName}
+            onChange={handleNameChange}
+          />
+        </Form.Group>
+        <Form.Group controlId="formNumber">
+          <Form.Label>Number</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter number"
+            value={newNumber}
+            onChange={handleNumberChange}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Add
+        </Button>
+        </Form>
+        
+      </Container>
+
     )
 }
 
