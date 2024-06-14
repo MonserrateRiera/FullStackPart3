@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Form from './Form'
+import MyForm from './Form'
 import PersonList from './PersonList'
 import Filter from './Filter'
 import Services from './Services/Services'
 import Notification from './Notification'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -90,7 +90,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Filter onChange={setfilter}/>
-      <Form onSubmit={addPerson}  />
+      <MyForm onSubmit={addPerson}  />
       <Notification message={message} clasname = {clasname} />
       <h2>Numbers</h2>
       <PersonList persons={filterPersons()} onDelete={deletePerson}/>

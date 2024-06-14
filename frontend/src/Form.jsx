@@ -1,6 +1,7 @@
 import {useState} from 'react'
-
-const Form = ({onChange, onSubmit}) =>{
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+const MyForm = ({onChange, onSubmit}) =>{
 
     const [ newName, setNewName ] = useState('')
     const [newNumber, setNewNumber] = useState('')
@@ -20,19 +21,31 @@ const Form = ({onChange, onSubmit}) =>{
 
     return(
       
-        <form onSubmit={handleSubmit}>
-          <h2>Add a new</h2>
-        <div>
-          name: <input value={newName} onChange={handleNameChange}/>
-        </div>
-        <div>
-          number: <input value={newNumber} onChange = {handleNumberChange}/>
-          </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+        <Form onSubmit={handleSubmit}>
+          <h2>Add a new contact</h2>
+          <Form.Group controlId="formName">
+        <Form.Label>Name</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter name"
+          value={newName}
+          onChange={handleNameChange}
+        />
+      </Form.Group>
+      <Form.Group controlId="formNumber">
+        <Form.Label>Number</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter number"
+          value={newNumber}
+          onChange={handleNumberChange}
+        />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Add
+      </Button>
+      </Form>
     )
 }
 
-export default Form;
+export default MyForm;
