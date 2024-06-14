@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { Form, Button, Card, Container } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 const MyForm = ({onChange, onSubmit}) =>{
 
     const [ newName, setNewName ] = useState('')
@@ -24,7 +24,7 @@ const MyForm = ({onChange, onSubmit}) =>{
           <Form onSubmit={handleSubmit}>
             <h2>Add a new contact</h2>
             <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
+          <Form.Label className="mt-4 px-4 py-2">Name</Form.Label >
           <Form.Control
             type="text"
             placeholder="Enter name"
@@ -33,7 +33,7 @@ const MyForm = ({onChange, onSubmit}) =>{
           />
         </Form.Group>
         <Form.Group controlId="formNumber">
-          <Form.Label>Number</Form.Label>
+          <Form.Label className="mt-4 px-4 py-2">Number</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter number"
@@ -41,7 +41,7 @@ const MyForm = ({onChange, onSubmit}) =>{
             onChange={handleNumberChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="mt-4 px-4 py-2">
           Add
         </Button>
         </Form>
