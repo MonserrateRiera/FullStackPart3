@@ -5,6 +5,7 @@ import Filter from './Filter'
 import Services from './Services/Services'
 import Notification from './Notification'
 import Head from './Header'
+import Footer from './Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap'
 
@@ -96,6 +97,7 @@ const App = () => {
       <Notification message={message} clasname = {clasname} />
       <h2 className='my-2 align-items-center'>Numbers</h2>
       <PersonList persons={filterPersons()} onDelete={deletePerson}/>
+      <Footer />
     </Container>
   )
 }
