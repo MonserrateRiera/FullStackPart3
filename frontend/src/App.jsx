@@ -5,7 +5,7 @@ import Filter from './Filter'
 import Services from './Services/Services'
 import Notification from './Notification'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Container } from 'react-bootstrap'
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [message, setMessage] = useState(null);
@@ -87,14 +87,14 @@ const App = () => {
   } 
 
   return (
-    <div>
+    <Container className='mt-5'>
       <h2>Phonebook</h2>
       <Filter onChange={setfilter}/>
       <MyForm onSubmit={addPerson}  />
       <Notification message={message} clasname = {clasname} />
       <h2>Numbers</h2>
       <PersonList persons={filterPersons()} onDelete={deletePerson}/>
-    </div>
+    </Container>
   )
 }
 
