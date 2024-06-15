@@ -12,11 +12,10 @@ const PersonList = ({persons, onDelete}) => {
     return(
         <ListGroup>
             {persons.map(person =>
-                <ListGroup.Item key={person.id} className="d-flex justify-content-between align-items-center">
-                    <PersonDetails name={person.name} number={person.phoneNumber}/>
-                    <Button variant="danger" onClick={() => onDelete(person.id)}>delete</Button>
+                <ListGroup.Item key={person.id} className="d-flex justify-content-between align-items-center flex-column flex-md-row">
+                    <PersonDetails name={person.name} number={person.phoneNumber} />
+                    <Button variant="danger" className="mt-2 mt-md-0" onClick={() => onDelete(person.id)}>Delete</Button>
                 </ListGroup.Item>
-                
             )}
         </ListGroup>
     )
