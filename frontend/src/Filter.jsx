@@ -8,10 +8,10 @@ const Filter = ({onChange}) =>{
 
 
     return (
-        <>
-        <label>Filter shown with: </label>
-        <input type="text" onChange={changeHandler} />
-        </>
+        <div className="my-3">
+        <label className="form-label">Filter shown with: </label>
+        <input type="text" onChange={changeHandler} className="form-control" />
+        </div>
         
         
     )
