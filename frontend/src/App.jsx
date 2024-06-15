@@ -92,7 +92,7 @@ const App = () => {
       <Filter onChange={setfilter}/>
       <MyForm onSubmit={addPerson}  />
       <Notification message={message} clasname = {clasname} />
-      <h2>Numbers</h2>
+      <h2 className='my-2'>Numbers</h2>
       <PersonList persons={filterPersons()} onDelete={deletePerson}/>
     </Container>
   )

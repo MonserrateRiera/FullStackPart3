@@ -1,5 +1,5 @@
 import PersonDetails from "./PersonDetails";
-
+import {Button, ListGroup} from 'react-bootstrap';
 const PersonList = ({persons, onDelete}) => {
     console.log(persons);
 
@@ -10,15 +10,15 @@ const PersonList = ({persons, onDelete}) => {
         )
     }
     return(
-        <>
+        <ListGroup>
             {persons.map(person =>
-                <div key={person.id}>
+                <ListGroup.Item key={person.id} className="d-flex justify-content-between align-items-center">
                     <PersonDetails name={person.name} number={person.phoneNumber}/>
-                    <button onClick={() => onDelete(person.id)}>delete</button>
-                </div>
+                    <Button variant="danger" onClick={() => onDelete(person.id)}>delete</Button>
+                </ListGroup.Item>
                 
             )}
-        </>
+        </ListGroup>
     )
 }
 export default PersonList;
