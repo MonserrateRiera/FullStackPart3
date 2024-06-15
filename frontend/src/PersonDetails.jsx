@@ -1,7 +1,7 @@
 const PersonDetails = ({name, number}) =>{
 
     return (
-        <div className="mb-2">
+        <div className="mb-2 text-center">
 
                 <strong className="me-2">Name:</strong> 
                 <span className="me-3">{name}</span>

@@ -19,7 +19,7 @@ const MyForm = ({onChange, onSubmit}) =>{
     }
 
     return(
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className="justify-content-between align-items-center">
             <h2>Add a new contact</h2>
             <Form.Group controlId="formName">
           <Form.Label className="mt-4 px-4 py-2">Name</Form.Label >
