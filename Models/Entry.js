@@ -12,7 +12,7 @@ const entrySchema = new mongoose.Schema({
       validator: function(v) {
         return /^\d{9}$/.test(v);
       },
-      message: (props) => `${props.value} no es un número de teléfono válido. El formato debe ser 123-456789`,
+      message: (props) => `${props.value} is not a valid phone number, it must be 9 digits long.`,
     },
     required: true,
   },
