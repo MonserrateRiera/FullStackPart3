@@ -22,23 +22,24 @@ const App = () => {
 
   const [filter, setfilter] = useState('')
 
-  const addPerson = (newPerson) =>{
-    if (isValid(newPerson)){
-      Services.postNew(newPerson)
-      .then(data => setPersons(persons.concat(data)))
-      setMessage("user created correctly");
-      setClasname('notification');
-      setTimeout(() => {setMessage(null)}, 5000)
-      .catch(error=>{
-        setMessage("There's an Error!", error);
-        setClasname('error');
-        setTimeout(() => {setMessage(null)}, 5000)
-      })
+  const addPerson = (newPerson) => {
+    if (isValid(newPerson)) {
+        Services.postNew(newPerson)
+            .then(data => {
+                setPersons(persons.concat(data));
+                setMessage("User created correctly");
+                setClasname('Success');
+                setTimeout(() => { setMessage(null) }, 5000);
+            })
+            .catch(error => {
+                setMessage("There's an error: " + error.message);
+                setClasname('Danger');
+                setTimeout(() => { setMessage(null) }, 5000);
+            });
+    } else {
+        confirmUpdate(newPerson);
     }
-    else{
-      confirmUpdate(newPerson);
-    }
-  }
+}
 
   const isValid = (newPerson) =>{
     if(persons.find(person=> person.name === newPerson.name)){
@@ -62,7 +63,7 @@ const App = () => {
     })
     .catch(error =>{
       setMessage("There's an Error!", error);
-      setClasname('error');
+      setClasname('Danger');
       setTimeout(() => {setMessage(null)}, 5000)
     })
   }

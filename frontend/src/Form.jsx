@@ -1,3 +1,4 @@
+import { set } from 'mongoose';
 import {useState} from 'react'
 import { Form, Button } from 'react-bootstrap';
 const MyForm = ({onChange, onSubmit}) =>{
@@ -16,6 +17,7 @@ const MyForm = ({onChange, onSubmit}) =>{
         const newPerson = {name: newName, phoneNumber: newNumber};
         onSubmit(newPerson);
         setNewName('');
+        setNewNumber('');
     }
 
     return(
