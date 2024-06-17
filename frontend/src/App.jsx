@@ -32,7 +32,7 @@ const App = () => {
                 setTimeout(() => { setMessage(null) }, 5000);
             })
             .catch(error => {
-                setMessage("There's an error: " + error.message);
+                setMessage("There's an error: " + error.response.data.error);
                 setClasname('Danger');
                 setTimeout(() => { setMessage(null) }, 5000);
             });
