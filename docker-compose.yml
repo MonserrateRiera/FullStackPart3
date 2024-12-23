@@ -1,0 +1,11 @@
+name: Phonebook container
+
+services:
+  phonebook:
+    image: mrieramar993/phonebook:v1
+    ports:
+      - ${PORT}
+    environment:
+      - PORT=${PORT}
+      - MONGODB_URI=${MONGODB_URI}
+    container_name: phonebook

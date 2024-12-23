@@ -21,3 +21,15 @@ How you'll see, styling is not my best skill, so I used Bootstrap to make my app
 The application is ready to use at the link:
 
 - https://monx-phonegide.onrender.com/
+
+
+## Usage:
+install dependencies with
+npm run install
+
+Build the frontend with 
+npm run build:ui
+
+Start the app:
+
+npm run start
