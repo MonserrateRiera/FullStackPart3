@@ -26,13 +26,16 @@ jobs:
           run: |
             docker build -t mrieramar993/phonebook:latest .
             docker push mrieramar993/phonebook:latest
-  
-        # Deploy to Heroku
 
-        # - name: Deploy to Heroku
-        #   uses: akhileshns/heroku-deploy@v4.1.6
-        #   with:
-        #     heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-        #     heroku_app_name: tu-app-heroku
-        #     heroku_email: ${{ secrets.HEROKU_EMAIL }}
-        #     docker_image: tu-usuario-dockerhub/tu-repo:latest
+        - name: Deploy to Render
+          env:
+            RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+            SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+          run: |
+              curl -X POST "https://api.render.com/v1/services/$SERVICE_ID/deploys" \
+              -H "Authorization: Bearer $RENDER_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "clearCache": false,
+                "dockerImage": "tu-usuario/nombre-imagen:etiqueta"
+              }'            
