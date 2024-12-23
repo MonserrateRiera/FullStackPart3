@@ -37,5 +37,5 @@ jobs:
               -H "Content-Type: application/json" \
               -d '{
                 "clearCache": false,
-                "dockerImage": "tu-usuario/nombre-imagen:etiqueta"
+                "dockerImage": "mrieramar993/phonebook:latest"
               }'            
