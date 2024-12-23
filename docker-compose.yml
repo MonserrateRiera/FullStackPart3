@@ -2,7 +2,7 @@ name: Phonebook container
 
 services:
   phonebook:
-    image: mrieramar993/phonebook:v1
+    image: mrieramar993/phonebook:latest
     ports:
       - ${PORT}
     environment:
